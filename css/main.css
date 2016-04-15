@@ -43,6 +43,7 @@ body{
 }
 
 .text{
+    font-size:30px;
 	position: absolute;
 	left: 650px;
 	height: 425px;
