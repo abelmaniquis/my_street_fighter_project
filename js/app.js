@@ -1,11 +1,9 @@
 $(document).ready(function(){
     $('.ryu').mouseenter(function() {
-    $('.ryu-still').hide();
-    $('.ryu-ready').show();
+    stilltoready();
   })
   $('.ryu').mouseleave(function(){
-    $('.ryu-ready').hide();
-    $('.ryu-still').show();
+    readytostill();
   })
   .mousedown(function(){
     playHadouken();
@@ -21,27 +19,45 @@ $(document).ready(function(){
     //animate hadouken to the right of the screen.
   })
   .mouseup(function(){
-    $('.ryu-throwing').hide();
-    $('.ryu-ready').show();
+    throwtohide();
   });
   /*do the ryu cool pose*/
 });
 
 $(document).keydown(function(e){
     if(e.keyCode == 88){
-    $('.ryu').hide();
-    $('.ryu-cool').show();
+      defaulttocool();
     }
   }).keyup(function(){
     $('.ryu-cool').hide();
     $('.ryu').show();
   });
   
+function defaulttocool(){
+    $('.ryu').hide();
+    $('.ryu-cool').show();
+};
+
+function readytostill(){
+  $('.ryu-ready').hide();
+    $('.ryu-still').show();
+};
+
+function stilltoready(){
+   $('.ryu-still').hide();
+   $('.ryu-ready').show();
+};
+
+function throwtohide(){
+   $('.ryu-throwing').hide();
+   $('.ryu-ready').show();
+};
+
 function playHadouken(){
     $('#hadouken-sound')[0].volume = 0.5;
     $('#hadouken-sound')[0].load();
     $('#hadouken-sound')[0].play();
-}
+};
 
 
 
