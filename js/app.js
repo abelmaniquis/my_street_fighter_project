@@ -1,10 +1,19 @@
 $(document).ready(readyfunction);
 
-
+/*---------------------------
+MODEL
+-----------------------------*/
 function readyfunction(){
   
   var ryu = $('.ryu');
   
+  ryu.Model = function(){
+    this.still = $('ryu-still');
+    this.cool =  $('ryu-cool');
+    this.ready = $('ryu-ready');
+    this.throwing = $('ryu-throwing');
+  };
+ 
   ryu.mouseenter(function(){
     stilltoready();
   })
@@ -23,23 +32,17 @@ function readyfunction(){
   /*do the ryu cool pose*/
 }
 
+/*--------------------------
+VIEW
+----------------------------*/
 
-$(document).keydown(function(e){
-    if(e.keyCode == 88){
-      defaulttocool();
-    }
-  }).keyup(function(){
-    $('.ryu-cool').hide();
-    $('.ryu').show();
-  });
-  
 function defaulttocool(){
     $('.ryu').hide();
     $('.ryu-cool').show();
 };
 
 function readytostill(){
-  $('.ryu-ready').hide();
+    $('.ryu-ready').hide();
     $('.ryu-still').show();
 };
 
@@ -74,7 +77,21 @@ function playHadouken(){
     $('#hadouken-sound')[0].play();
 };
 
+/*---------------------------
+CONTROLLER
+-----------------------------*/
+$(document).keydown(function(e){
+    coolPose(e);
+    }).keyup(function(){
+    $('.ryu-cool').hide();
+    $('.ryu').show();
+});
 
+function coolPose(e){
+  if(e.keyCode == 88){
+    defaulttocool();
+  }
+};
 
 
 
